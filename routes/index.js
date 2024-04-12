@@ -13,6 +13,14 @@ module.exports = server => {
         })
     });
 
+    // route pour tester si tout est ok
+    server.get("/welcome", (req, res) => { 
+        res.status(200)
+        .send({
+            message: "Hello. Bienvenue sur la page d'accueil de l'API memeteo."
+        })
+    });
+
     // Récupérer les memes de la bdd de test
     server.get('/test', (req, res) => {
         res.send({
