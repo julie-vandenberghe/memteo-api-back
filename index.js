@@ -33,7 +33,7 @@ const normalizePort = val => {
    }
    return false;
  };
-const port = normalizePort(process.env.PORT || '5500');
+const port = normalizePort(process.env.PORT || '5501');
 server.set('port', port); //on définit le port
 
 //ÉCOUTE DU SERVEUR

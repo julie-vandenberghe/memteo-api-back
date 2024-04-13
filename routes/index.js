@@ -1,6 +1,7 @@
 const MemeController = require("../controllers/meme.js");
 const SoundController = require("../controllers/sound.js");
 const memesTest = require("../datas/memes.js");
+const soundsTest = require("../datas/sounds.js");
 
 module.exports = server => {
     server.get("/", (req, res) => { 
@@ -22,10 +23,18 @@ module.exports = server => {
     });
 
     // Récupérer les memes de la bdd de test
-    server.get('/test', (req, res) => {
+    server.get('/memesTest', (req, res) => {
         res.send({
             // ici, on reformule la réponse de l'api comme on le souhaite
             memesTest
+        });
+    })
+
+    // Récupérer les sons de la bdd de test
+    server.get('/soundsTest', (req, res) => {
+        res.send({
+            // ici, on reformule la réponse de l'api comme on le souhaite
+            soundsTest
         });
     })
 
