@@ -5,8 +5,8 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const SoundSchema = new Schema({
-    name: String,
-    link: String,
+    name: { type: String, required: true },
+    link: { type: String, required: true },
 });
 
 //CRÉATION DU MODÈLE

@@ -4,25 +4,17 @@ module.exports = {
     getAll(req, res) {
         MemeModel.find().then(memes => {
             res.send(memes);
-        });
+        })
+        .catch(error => res.status(400).json({ error }));
     },
     get(req, res) {
         const id = req.params.id;
         MemeModel.findById(id).then(meme => {
             res.send(meme);
-        });
+        })
+        .catch(error => res.status(400).json({ error }));
     },
     create(req, res) {
-        // const meme = new Meme(req.body);
-        /* const meme = new MemeModel({ // on crée une instance de notre modèle Meme 
-            ...req.body // on lui passe un objet JavaScript contenant toutes les informations requises du corps de requête
-            // on utilise le spread operator, raccourci nous permettant d'avoir l'équivalent de :
-            // title: req.body.title;
-            // description: req.body.description;
-          });
-        meme.save().then(() => {
-            res.send({ result: `Création du meme ${meme.name}` });
-        }); */
         const meme = new MemeModel({
             name:req.body.name,
             link:req.body.link
@@ -30,14 +22,17 @@ module.exports = {
         meme.save().then(() => {
             res.send({result: `Création du meme ${meme.name}` });
         })
+        .catch(error => res.status(400).json({ error }));
         
     },
     update(req, res) {
         const id = req.params.id;
         if (id) {
-            MemeModel.findByIdAndUpdate(id, req.body).then(meme => {
+            MemeModel.findByIdAndUpdate(id, req.body)
+            .then(meme => {
                 res.send({ result: `Mise à jour du meme ${meme.name}` });
-            });
+            })
+            .catch(error => res.status(400).json({ error }));
         } else {
             res.status(401);
             res.send({ error: "Un id est nécessaire pour mettre à jour un meme" });
@@ -45,8 +40,10 @@ module.exports = {
     },
     delete(req, res) {
         const id = req.params.id;
-        MemeModel.findByIdAndDelete(id).then(() => {
+        MemeModel.findByIdAndDelete(id)
+        .then(() => {
             res.send({ result: `Suppression du meme ${id}` });
-        });
+        })
+        .catch(error => res.status(400).json({ error }));
     }
 }

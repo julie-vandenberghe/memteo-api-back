@@ -37,7 +37,7 @@ module.exports = {
     },
     delete(req, res) {
         const id = req.params.id;
-        SoundModel.findByIdAndRemove(id).then(() => {
+        SoundModel.findByIdAndDelete(id).then(() => {
             res.send({ result: `Suppression du son ${id}` });
         });
     }
