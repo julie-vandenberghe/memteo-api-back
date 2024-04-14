@@ -1,4 +1,4 @@
-const MemeController = require("../controllers/_meme.js");
+const MemeController = require("../controllers/meme.js");
 const SoundController = require("../controllers/sound.js");
 const memesTest = require("../datas/memes.js");
 const soundsTest = require("../datas/sounds.js");
@@ -42,27 +42,27 @@ module.exports = server => {
         /* ROUTES DES MEMES */
         // Route pour tous les memes
         server.get("/memes", (req, res) => {
-            MemeController.getAllMeme(req, res);
+            MemeController.getAll(req, res);
         })
     
         // Route pour le détail d'un meme
         server.get("/memes/:id", (req, res) => {
-            MemeController.getOneMeme(req, res);
+            MemeController.get(req, res);
         })
     
         // Route pour l'ajout d'un meme
         server.post("/memes", (req, res) => {
-            MemeController.createMeme(req, res);
+            MemeController.create(req, res);
         })
 
         // Route pour la mise à jour d'un meme
         server.put("/memes/:id", (req, res) => {
-            MemeController.modifyMeme(req, res);
+            MemeController.update(req, res);
         })
     
         // Route pour la suppression d'un meme
         server.delete("/memes/:id", (req, res) => {
-            MemeController.deleteMeme(req, res);
+            MemeController.delete(req, res);
         })
 
 
@@ -81,6 +81,11 @@ module.exports = server => {
         // Route pour l'ajout d'un son
         server.post("/sounds", (req, res) => {
             SoundController.create(req, res);
+        })
+
+        // Route pour la mise à jour d'un son
+        server.put("/sounds/:id", (req, res) => {
+            SoundController.update(req, res);
         })
     
         // Route pour la suppression d'un son
