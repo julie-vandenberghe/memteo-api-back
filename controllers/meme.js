@@ -45,7 +45,7 @@ module.exports = {
     },
     delete(req, res) {
         const id = req.params.id;
-        MemeModel.findByIdAndRemove(id).then(() => {
+        MemeModel.findByIdAndDelete(id).then(() => {
             res.send({ result: `Suppression du meme ${id}` });
         });
     }
