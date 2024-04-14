@@ -1,4 +1,4 @@
-const MemeController = require("../controllers/meme.js");
+const MemeController = require("../controllers/_meme.js");
 const SoundController = require("../controllers/sound.js");
 const memesTest = require("../datas/memes.js");
 const soundsTest = require("../datas/sounds.js");
@@ -23,20 +23,20 @@ module.exports = server => {
     });
 
     // Récupérer les memes de la bdd de test
-    server.get('/memes', (req, res) => {
+    /* server.get('/memes', (req, res) => {
         res.send({
             // ici, on reformule la réponse de l'api comme on le souhaite
             memesTest
         });
-    })
+    }) */
 
     // Récupérer les sons de la bdd de test
-    server.get('/sounds', (req, res) => {
+    /* server.get('/sounds', (req, res) => {
         res.send({
             // ici, on reformule la réponse de l'api comme on le souhaite
             soundsTest
         });
-    })
+    }) */
 
 
         /* ROUTES DES MEMES */
@@ -47,17 +47,22 @@ module.exports = server => {
     
         // Route pour le détail d'un meme
         server.get("/memes/:id", (req, res) => {
-            MemeController.get(req, res);
+            MemeController.getOneMeme(req, res);
         })
     
         // Route pour l'ajout d'un meme
         server.post("/memes", (req, res) => {
-            MemeController.create(req, res);
+            MemeController.createMeme(req, res);
+        })
+
+        // Route pour la mise à jour d'un meme
+        server.put("/memes/:id", (req, res) => {
+            MemeController.modifyMeme(req, res);
         })
     
         // Route pour la suppression d'un meme
         server.delete("/memes/:id", (req, res) => {
-            MemeController.delete(req, res);
+            MemeController.deleteMeme(req, res);
         })
 
 
