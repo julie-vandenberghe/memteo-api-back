@@ -25,7 +25,7 @@ module.exports = {
         .catch(error => res.status(400).json({ error }));   
     },
     createMany(req, res) {
-        const memesData = req.body.memes;
+        const memesData = req.body;
     
         MemeModel.insertMany(memesData)
             .then((memes) => {
