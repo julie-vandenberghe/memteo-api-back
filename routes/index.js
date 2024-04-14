@@ -55,6 +55,11 @@ module.exports = server => {
             MemeController.create(req, res);
         })
 
+        // Route pour l'ajout de plusieurs memes
+        server.post("/memes/bulk", (req, res) => {
+            MemeController.createMany(req, res);
+        })
+
         // Route pour la mise à jour d'un meme
         server.put("/memes/:id", (req, res) => {
             MemeController.update(req, res);

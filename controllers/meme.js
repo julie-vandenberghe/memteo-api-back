@@ -22,8 +22,18 @@ module.exports = {
         meme.save().then(() => {
             res.send({result: `Création du meme ${meme.name}` });
         })
-        .catch(error => res.status(400).json({ error }));
-        
+        .catch(error => res.status(400).json({ error }));   
+    },
+    createMany(req, res) {
+        const memesData = req.body.memes;
+    
+        MemeModel.insertMany(memesData)
+            .then((memes) => {
+                res.status(200).json({ result: `Création de ${memes.length} memes avec succès` });
+            })
+            .catch((error) => {
+                res.status(400).json({ error: error.message });
+            });
     },
     update(req, res) {
         const id = req.params.id;
