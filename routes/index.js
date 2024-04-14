@@ -23,20 +23,15 @@ module.exports = server => {
     });
 
     // Récupérer les memes de la bdd de test
-    server.get('/memesTest', (req, res) => {
+    server.get('/memes', (req, res) => {
         res.send({
             // ici, on reformule la réponse de l'api comme on le souhaite
             memesTest
         });
     })
 
-    // Route pour la suppression d'un meme dans la bdd de test
-    server.delete("/memesTest/:id", (req, res) => {
-        MemeController.delete(req, res);
-    })
-
     // Récupérer les sons de la bdd de test
-    server.get('/soundsTest', (req, res) => {
+    server.get('/sounds', (req, res) => {
         res.send({
             // ici, on reformule la réponse de l'api comme on le souhaite
             soundsTest
@@ -46,9 +41,9 @@ module.exports = server => {
 
         /* ROUTES DES MEMES */
         // Route pour tous les memes
-        server.get("/memes", (req, res) => {
+        /* server.get("/memes", (req, res) => {
             MemeController.getAll(req, res);
-        })
+        }) */
     
         // Route pour le détail d'un meme
         server.get("/memes/:id", (req, res) => {
@@ -69,9 +64,9 @@ module.exports = server => {
 
         /* ROUTES DES SONS */
         // Route pour tous les sons
-        server.get("/sounds", (req, res) => {
+        /* server.get("/sounds", (req, res) => {
             SoundController.getAll(req, res);
-        })
+        }) */
     
          // Route pour le détail d'un son
         server.get("/sounds/:id", (req, res) => {
