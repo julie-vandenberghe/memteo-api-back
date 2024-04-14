@@ -14,15 +14,23 @@ module.exports = {
     },
     create(req, res) {
         // const meme = new Meme(req.body);
-        const meme = new MemeModel({ // on crée une instance de notre modèle Meme 
+        /* const meme = new MemeModel({ // on crée une instance de notre modèle Meme 
             ...req.body // on lui passe un objet JavaScript contenant toutes les informations requises du corps de requête
-            // on utilise le spread operator, raccourci nous permtettant d'avoir l'équivalent de :
+            // on utilise le spread operator, raccourci nous permettant d'avoir l'équivalent de :
             // title: req.body.title;
             // description: req.body.description;
           });
         meme.save().then(() => {
             res.send({ result: `Création du meme ${meme.name}` });
+        }); */
+        const meme = new MemeModel({
+            name:req.body.name,
+            link:req.body.link
         });
+        meme.save().then(() => {
+            res.send({result: `Création du meme ${meme.name}` });
+        })
+        
     },
     update(req, res) {
         const id = req.params.id;
