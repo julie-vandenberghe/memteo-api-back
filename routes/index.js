@@ -30,6 +30,11 @@ module.exports = server => {
         });
     })
 
+    // Route pour la suppression d'un meme dans la bdd de test
+    server.delete("/memesTest/:id", (req, res) => {
+        MemeController.delete(req, res);
+    })
+
     // Récupérer les sons de la bdd de test
     server.get('/soundsTest', (req, res) => {
         res.send({
