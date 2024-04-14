@@ -41,9 +41,9 @@ module.exports = server => {
 
         /* ROUTES DES MEMES */
         // Route pour tous les memes
-        /* server.get("/memes", (req, res) => {
-            MemeController.getAll(req, res);
-        }) */
+        server.get("/memes", (req, res) => {
+            MemeController.getAllMeme(req, res);
+        })
     
         // Route pour le détail d'un meme
         server.get("/memes/:id", (req, res) => {
@@ -69,9 +69,9 @@ module.exports = server => {
 
         /* ROUTES DES SONS */
         // Route pour tous les sons
-        /* server.get("/sounds", (req, res) => {
+        server.get("/sounds", (req, res) => {
             SoundController.getAll(req, res);
-        }) */
+        }) 
     
          // Route pour le détail d'un son
         server.get("/sounds/:id", (req, res) => {
